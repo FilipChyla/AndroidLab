@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="100dp"
+    android:stretchColumns="1,2">
+
+    <TableRow>
+        <TextView
+            android:id="@+id/phone_manufacturer"
+            android:textSize="16sp"
+            android:padding="10dp"
+            android:gravity="start"
+            android:layout_column="1"/>
+        <TextView
+            android:id="@+id/phone_model"
+            android:textSize="16sp"
+            android:padding="10dp"
+            android:gravity="start"
+            android:layout_column="2"/>
+    </TableRow>
+
+</TableLayout>

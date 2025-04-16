@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".phonesExercise.view.AddPhoneActivity">
+
+    <TextView
+        android:id="@+id/manufacturerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/manufacturer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.09"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1" />
+
+    <TextView
+        android:id="@+id/modelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="@string/model"
+        app:layout_constraintEnd_toEndOf="@+id/manufacturerTextView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/manufacturerTextView"
+        app:layout_constraintTop_toBottomOf="@+id/manufacturerTextView" />
+
+    <TextView
+        android:id="@+id/versionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="@string/android_version"
+        app:layout_constraintEnd_toEndOf="@+id/manufacturerTextView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/manufacturerTextView"
+        app:layout_constraintTop_toBottomOf="@+id/modelTextView" />
+
+    <TextView
+        android:id="@+id/websiteTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="@string/website"
+        app:layout_constraintEnd_toEndOf="@+id/manufacturerTextView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/manufacturerTextView"
+        app:layout_constraintTop_toBottomOf="@+id/versionTextView" />
+
+    <EditText
+        android:id="@+id/editTextManufacturer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/manufacturer"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="@+id/manufacturerTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/manufacturerTextView"
+        app:layout_constraintTop_toTopOf="@+id/manufacturerTextView" />
+
+    <EditText
+        android:id="@+id/editTextModel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/model"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="@+id/modelTextView"
+        app:layout_constraintEnd_toEndOf="@+id/editTextManufacturer"
+        app:layout_constraintStart_toStartOf="@+id/editTextManufacturer"
+        app:layout_constraintTop_toTopOf="@+id/modelTextView" />
+
+    <EditText
+        android:id="@+id/editTextVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/android_version"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="@+id/versionTextView"
+        app:layout_constraintEnd_toEndOf="@+id/editTextModel"
+        app:layout_constraintStart_toStartOf="@+id/editTextModel"
+        app:layout_constraintTop_toTopOf="@+id/versionTextView" />
+
+    <EditText
+        android:id="@+id/editTextWebsite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/website"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="@+id/websiteTextView"
+        app:layout_constraintEnd_toEndOf="@+id/editTextVersion"
+        app:layout_constraintStart_toStartOf="@+id/editTextVersion"
+        app:layout_constraintTop_toTopOf="@+id/websiteTextView" />
+
+    <LinearLayout
+        android:id="@+id/buttonList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextWebsite">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/websiteButton"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="@string/website" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="@string/save" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

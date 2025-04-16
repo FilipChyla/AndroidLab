@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/phones_clear_all_data"
+        android:title="@string/clear_all_data"
+        />
+    <item
+        android:id="@+id/phones_reset_db"
+        android:title="@string/reset_db"
+        />
+</menu>
