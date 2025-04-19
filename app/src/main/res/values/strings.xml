@@ -70,6 +70,15 @@
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
     <string name="dodaj_telefon">Dodaj telefon</string>
+    <string name="adres">Adres:</string>
+    <string name="default_address">https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.36.tar.xz</string>
+    <string name="adres_url">Adres URL</string>
+    <string name="pobierz_informacje">Pobierz informacje</string>
+    <string name="empty_text_view_dashed">---</string>
+    <string name="rozmiar_pliku">Rozmiar pliku:</string>
+    <string name="typ_pliku">Typ pliku</string>
+    <string name="pobierz_plik">Pobierz plik</string>
+    <string name="pobrano_bajtow">Pobrano bajtów:</string>
     <string-array name="subjects">
         <item>Integracja systemow</item>
         <item>Interakcja czlowiek komputer</item>

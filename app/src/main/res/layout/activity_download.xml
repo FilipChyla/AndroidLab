@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".downloadExercise.DownloadActivity">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingTop="64dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="0dp"
+            android:paddingEnd="8dp"
+            android:text="@string/adres"
+            android:textSize="16sp"
+            android:textColor="#777777"/>
+
+        <EditText
+            android:id="@+id/addressET"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:autofillHints="url"
+            android:hint="@string/adres_url"
+            android:inputType="textUri"
+            android:text="@string/default_address" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/getInfoButton"
+        android:layout_width="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/pobierz_informacje"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <TextView
+        android:id="@+id/fileSizeTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/rozmiar_pliku"
+        android:textColor="#777777"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/getInfoButton" />
+
+    <TextView
+        android:id="@+id/fileTypeTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/typ_pliku"
+        app:layout_constraintEnd_toEndOf="@+id/fileSizeTV"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/fileSizeTV"
+        app:layout_constraintTop_toBottomOf="@+id/fileSizeTV"
+        android:textColor="#777777"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/downloadButton"
+        android:layout_width="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/pobierz_plik"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fileTypeInfoTV" />
+
+    <TextView
+        android:id="@+id/fileSizeInfoTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/empty_text_view_dashed"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/fileSizeTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/dowloadedAmountTV"
+        app:layout_constraintTop_toTopOf="@+id/fileSizeTV" />
+
+    <TextView
+        android:id="@+id/fileTypeInfoTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/empty_text_view_dashed"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/fileTypeTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/dowloadedAmountTV"
+        app:layout_constraintTop_toTopOf="@+id/fileTypeTV" />
+
+    <TextView
+        android:id="@+id/dowloadedAmountTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/pobrano_bajtow"
+        android:textColor="#777777"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/downloadButton" />
+
+    <TextView
+        android:id="@+id/donloadedAmountInfoTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/empty_text_view_dashed"
+        app:layout_constraintBottom_toBottomOf="@+id/dowloadedAmountTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/dowloadedAmountTV"
+        app:layout_constraintTop_toTopOf="@+id/dowloadedAmountTV"
+        android:textSize="20sp"/>
+
+    <ProgressBar
+        android:id="@+id/downloadProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/donloadedAmountInfoTV" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

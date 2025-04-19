@@ -13,6 +13,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import pl.pollub.android.myapplication.downloadExercise.DownloadActivity;
 import pl.pollub.android.myapplication.gradesExercise.view.GetInfoActivity;
 import pl.pollub.android.myapplication.phonesExercise.view.ListPhonesActivity;
 
@@ -44,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(this, GetInfoActivity.class));
         } else if (item.getItemId() == R.id.menu_zad2) {
             startActivity(new Intent(this, ListPhonesActivity.class));
+        } else if (item.getItemId() == R.id.menu_zad3) {
+            startActivity(new Intent(this, DownloadActivity.class));
         }
         return true;
     }
