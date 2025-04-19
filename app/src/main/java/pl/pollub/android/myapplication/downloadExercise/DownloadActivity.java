@@ -1,7 +1,8 @@
 package pl.pollub.android.myapplication.downloadExercise;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,6 +16,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import pl.pollub.android.myapplication.R;
 
@@ -23,6 +26,8 @@ public class DownloadActivity extends AppCompatActivity {
     EditText addressET;
     TextView fileSizeInfoTV, fileTypeInfoTV;
     Button getInfoButton;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private final Handler handler = new Handler(Looper.getMainLooper());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +48,7 @@ public class DownloadActivity extends AppCompatActivity {
     private void assignListeners() {
         getInfoButton.setOnClickListener(view -> {
             String urlString = addressET.getText().toString();
-            new FetchFileInfoTask().execute(urlString);
+            fetchFileInfoFrom(urlString);
         });
     }
 
@@ -54,43 +59,55 @@ public class DownloadActivity extends AppCompatActivity {
         fileTypeInfoTV = findViewById(R.id.fileTypeInfoTV);
     }
 
-    private class FetchFileInfoTask extends AsyncTask<String, Void, String> {
-
-        @Override
-        protected String doInBackground(String... strings) {
-            String urlString = strings[0];
-            HttpURLConnection connection = null;
+    private void fetchFileInfoFrom(String urlString) {
+        executor.execute(() -> {
+            String stringTypeAndLength;
             try {
-                URL url = new URL(urlString);
-                connection = (HttpURLConnection) url.openConnection();
-                connection.setRequestMethod("GET");
+                stringTypeAndLength = getFileTypeAndLengthFrom(urlString);
 
-                int responseCode = connection.getResponseCode();
-                if (responseCode != HttpURLConnection.HTTP_OK) {
-                    return "Błąd połączenia: " + responseCode;
-                }
+                String finalResultInfo = stringTypeAndLength;
+                handler.post(() -> {
+                    String[] fileData = finalResultInfo.split(" ", 2);
+                    fileTypeInfoTV.setText(fileData[0]);
+                    fileSizeInfoTV.setText(fileData[1]);
+                });
 
-                return  connection.getContentType() + " " + connection.getContentLength();
 
             } catch (Exception e) {
-                return "Błąd: " + e.getMessage();
-            }finally {
-                if(connection != null){
-                    connection.disconnect();
-                }
-            }
-        }
+                handler.post(() -> {
+                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                    fileTypeInfoTV.setText("---");
+                    fileSizeInfoTV.setText("---");
+                });
 
-        @Override
-        protected void onPostExecute(String result) {
-            if (result.startsWith("Błąd")){
-                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                fileTypeInfoTV.setText("---");
-                fileSizeInfoTV.setText("---");
-            }else {
-                fileTypeInfoTV.setText(result.split(" ")[0]);
-                fileSizeInfoTV.setText(result.split(" ")[1]);
+            }
+        });
+    }
+
+    private String getFileTypeAndLengthFrom(String urlString) throws Exception {
+        String resultInfo;
+        HttpURLConnection connection = null;
+
+        try {
+            URL url = new URL(urlString);
+            connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+
+            int responseCode = connection.getResponseCode();
+
+            if (responseCode != HttpURLConnection.HTTP_OK) {
+                throw new Exception("Błąd połączenia: " + responseCode);
+            } else {
+                resultInfo = connection.getContentType() + " " + connection.getContentLength();
+            }
+
+        } catch (Exception e) {
+            throw new Exception(e);
+        } finally {
+            if (connection != null) {
+                connection.disconnect();
             }
         }
+        return resultInfo;
     }
 }
